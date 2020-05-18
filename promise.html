@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <script>
+        // creating a promise
+        var isMomHappy = false
+        // promise
+        var willIGetNewPhone = new Promise( (resolve,reject) => {
+            // for mon is happy
+            if(isMomHappy) {
+                var phone = {
+                    brand: 'Samsung',
+                    color: 'Black'
+                }
+                resolve(phone) //fullfilled
+            }else{
+                //  Error object can also be used as a base object for user-defined exceptions
+                var reason = new Error('Mom is not happy')
+                reject(reason); // reject
+            }
+        })
+        // end of promise
+        // ---------------------------
+        // call our promise
+        var askMom = function() {
+            willIGetNewPhone
+            .then(fullfilled => {
+                console.log(fullfilled)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+        }
+        askMom();
+    </script>
+<body>
+    
+</body>
+</html>
